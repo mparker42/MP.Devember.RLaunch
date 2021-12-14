@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+*.css
+/MP.Devember.RLaunch/compilerconfig.json
+/MP.Devember.RLaunch/compilerconfig.json.defaults

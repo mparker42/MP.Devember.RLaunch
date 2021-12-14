@@ -1,7 +1,16 @@
 {
-  "exampleSiteTitle": "Template Example Site",
-  "exampleHomePage": "Home",
-  "exampleCounterPage": "Counter",
-  "exampleFetchDataPage": "Fetch Data",
-  "exampleFetchDataPageGrouping": "Fetch Area"
+  "siteTabTitle": "Level1 AMD Launch Gif - Lisa Su",
+  "siteTitle": "Level1 AMD Launch Gif - Lisa Su",
+  "memeAltText": "The Level One NFT. An animated gif of Lisa Su showing a Ryzen 5000 series chip on stage. A bar representing the performance of the chip extends off the screen, through the side of the building, impaling a pigeon. The image ends with Lisa donning a mech suit.",
+  "aboutTitle": "About",
+  "aboutLineOne": "This page is an eternal monument to the first Level One NFT.",
+  "aboutLineTwo": "The data displayed on this page is loaded fresh for each user directly from the blockchain.",
+  "aboutLineThree": "These hot bytes are the only way to accurately experience an NFT; Will another AWS outage bring Mintable down along with every NFT? Will the nutjob who built this page sell his only claim to history? Simply by refreshing the page, you can find out.",
+  "tokenDescriptionTitle": "Token Description",
+  "tokenDescriptionMissing": "Missing Text",
+  "blockchainHistoryTitle": "Blockchain History",
+  "transactionTitle": "Transaction {0}",
+  "noTransactions": "No Transactions Found.",
+  "validationInfoTitle": "Validation Info",
+  "validationInfoPreface": "What follows is the raw server data for the NFT:"
 }

@@ -1,8 +1,54 @@
 ﻿@page "/"
 @using System.Text.Json
 
-<PageTitle>Index</PageTitle>
+@if (!Loading)
+{
+    <PageTitle>@TS.SafeGet("siteTabTitle")</PageTitle>
 
-<h1>Hello, world!</h1>
+    <MudContainer MaxWidth="MaxWidth.Medium">
+        <h1>@TokenSummary.Title</h1>
 
-@JsonSerializer.Serialize(TokenSummary)
+        <div class="memePicWrapper">
+            <img src="@TokenSummary.Image" class="memePic" alt="@TS.SafeGet("memeAltText")" />
+        </div>
+
+        <h2>@TS.SafeGet("aboutTitle")</h2>
+        <p>
+            @TS.SafeGet("aboutLineOne")
+            <br>
+            @TS.SafeGet("aboutLineTwo")
+            <br>
+            @TS.SafeGet("aboutLineThree")
+        </p>
+
+        <h2>@TS.SafeGet("tokenDescriptionTitle")</h2>
+        <p>@(TokenSummary?.Description?.Replace("<p>", "")?.Replace("</p>", "") ?? @TS.SafeGet("tokenDescriptionMissing"))</p>
+
+        <h2>@TS.SafeGet("blockchainHistoryTitle")</h2>
+        @if (TokenSummary?.TokenTransactions?.Any() ?? false)
+        {
+            var i = 1;
+            foreach (var transaction in TokenSummary.TokenTransactions)
+            {
+                <MudCard>
+                    <h3>@(string.Format(TS.SafeGet("transactionTitle"), i++))</h3>
+                    <div>@transaction?.From?.Name</div>
+                    <div>@transaction?.To?.Name</div>
+                </MudCard>
+            }
+        }
+        else
+        {
+            <MudCard>
+                @TS.SafeGet("noTransactions")
+            </MudCard>
+        }
+
+        <h2>@TS.SafeGet("validationInfoTitle")</h2>
+
+        <p>@TS.SafeGet("validationInfoPreface")</p>
+        <code>
+            @JsonSerializer.Serialize(TokenSummary, new JsonSerializerOptions { WriteIndented = true })
+        </code>
+    </MudContainer>
+}
