@@ -12,5 +12,7 @@
   "transactionTitle": "Transaction {0}",
   "noTransactions": "No Transactions Found.",
   "validationInfoTitle": "Validation Info",
-  "validationInfoPreface": "What follows is the raw server data for the NFT:"
+  "validationInfoPreface": "What follows is the raw server data for the NFT:",
+  "voidTitleText": "All Etherium tokens have an initial transaction from an empty wallet address to the creator wallet. This appears as \"The Void\" on this site.",
+  "verifiedTitleText": "Verified user"
 }

@@ -1,16 +1,12 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using MP.Blazor.Library;
 using MP.Blazor.Library.Models;
 using MP.Devember.RLaunch;
 using MP.Devember.RLaunch.Models;
 using MP.SimpleTokens.Token.Clients;
 using MudBlazor;
-using MudBlazor.Utilities;
 using Refit;
-using System;
-using System.Net.Http;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -21,7 +17,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 var lightThemePalette = new Palette
 {
     Primary = "#005900",
-    Secondary = "#F7C20C",
+    Secondary = "#8A6B05",
     Tertiary = "#BB2E16",
     Info = "#0C80DF",
     Success = "#00C853",

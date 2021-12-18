@@ -41,9 +41,19 @@
                     <MudCard>
                         <h3>@(string.Format(TS.SafeGet("transactionTitle"), i++))</h3>
                         <hr>
-                        <MudChip Icon="@(@transaction?.From?.IsVerified ?? false ? Icons.Material.Filled.VerifiedUser : null)" Color="Color.Secondary">@transaction?.From?.Name</MudChip>
+                        <MudChip
+                            Icon="@(@transaction?.From?.IsVerified ?? false ? Icons.Material.Filled.VerifiedUser : null)"
+                            Color="Color.Secondary"
+                            Class="@(transaction?.From?.Name == "The Void" || (transaction?.From?.IsVerified ?? false) ? "info": "")"
+                            title="@(transaction?.From?.Name == "The Void" ? TS.SafeGet("voidTitleText") : (transaction?.From?.IsVerified ?? false) ? TS.SafeGet("verifiedTitleText"): "")"
+                        >@transaction?.From?.Name</MudChip>
                         🡆
-                        <MudChip Icon="@(@transaction?.To?.IsVerified ?? false ? Icons.Material.Filled.VerifiedUser : null)" Color="Color.Primary">@transaction?.To?.Name</MudChip>
+                        <MudChip
+                            Icon="@(@transaction?.To?.IsVerified ?? false ? Icons.Material.Filled.VerifiedUser : null)"
+                            Class="@((transaction?.To?.IsVerified ?? false) ? "info": "")"
+                            Color="Color.Primary"
+                            title="@((transaction?.To?.IsVerified ?? false) ? TS.SafeGet("verifiedTitleText"): "")"
+                        >@transaction?.To?.Name</MudChip>
                     </MudCard>
                 </div>
                 <br />
