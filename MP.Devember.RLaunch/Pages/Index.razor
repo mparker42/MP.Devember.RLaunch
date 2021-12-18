@@ -12,6 +12,8 @@
             <img src="@TokenSummary.Image" class="memePic" alt="@TS.SafeGet("memeAltText")" />
         </div>
 
+        <hr>
+
         <h2>@TS.SafeGet("aboutTitle")</h2>
         <p>
             @TS.SafeGet("aboutLineOne")
@@ -21,8 +23,12 @@
             @TS.SafeGet("aboutLineThree")
         </p>
 
+        <hr>
+
         <h2>@TS.SafeGet("tokenDescriptionTitle")</h2>
         <p>@(TokenSummary?.Description?.Replace("<p>", "")?.Replace("</p>", "") ?? @TS.SafeGet("tokenDescriptionMissing"))</p>
+
+        <hr>
 
         <h2>@TS.SafeGet("blockchainHistoryTitle")</h2>
         @if (TokenSummary?.TokenTransactions?.Any() ?? false)
@@ -32,8 +38,8 @@
             {
                 <MudCard>
                     <h3>@(string.Format(TS.SafeGet("transactionTitle"), i++))</h3>
-                    <div>@transaction?.From?.Name</div>
-                    <div>@transaction?.To?.Name</div>
+                    <p>@transaction?.From?.Name</p>
+                    <p>@transaction?.To?.Name</p>
                 </MudCard>
             }
         }
@@ -43,6 +49,8 @@
                 @TS.SafeGet("noTransactions")
             </MudCard>
         }
+
+        <hr>
 
         <h2>@TS.SafeGet("validationInfoTitle")</h2>
 
