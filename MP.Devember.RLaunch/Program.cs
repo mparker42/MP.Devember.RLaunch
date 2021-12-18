@@ -39,12 +39,12 @@ lightThemePalette.AppbarBackground = lightThemePalette.Primary;
 
 var darkThemePalette = new Palette
 {
-    Black = "#27272f",
-    BackgroundGrey = "#27272f",
+    Black = "#27272F",
+    BackgroundGrey = "#27272F",
     Surface = "#373740",
     AppbarText = "rgba(255,255,255, 0.70)",
     Primary = "#005900",
-    Secondary = "#F7C20C",
+    Secondary = "#8A6B05",
     Tertiary = "#BB2E16",
     Info = "#0C80DF",
     Success = "#00C853",

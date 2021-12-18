@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using System.Text.Json
+@using System.Text.Json.Serialization
 
 @if (!Loading)
 {
@@ -36,11 +37,16 @@
             var i = 1;
             foreach (var transaction in TokenSummary.TokenTransactions)
             {
-                <MudCard>
-                    <h3>@(string.Format(TS.SafeGet("transactionTitle"), i++))</h3>
-                    <p>@transaction?.From?.Name</p>
-                    <p>@transaction?.To?.Name</p>
-                </MudCard>
+                <div>
+                    <MudCard>
+                        <h3>@(string.Format(TS.SafeGet("transactionTitle"), i++))</h3>
+                        <hr>
+                        <MudChip Icon="@(@transaction?.From?.IsVerified ?? false ? Icons.Material.Filled.VerifiedUser : null)" Color="Color.Secondary">@transaction?.From?.Name</MudChip>
+                        🡆
+                        <MudChip Icon="@(@transaction?.To?.IsVerified ?? false ? Icons.Material.Filled.VerifiedUser : null)" Color="Color.Primary">@transaction?.To?.Name</MudChip>
+                    </MudCard>
+                </div>
+                <br />
             }
         }
         else
@@ -56,7 +62,17 @@
 
         <p>@TS.SafeGet("validationInfoPreface")</p>
         <code>
-            @JsonSerializer.Serialize(TokenSummary, new JsonSerializerOptions { WriteIndented = true })
+            @JsonSerializer.Serialize(
+                TokenSummary,
+                new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    Converters =
+                    {
+                        new JsonStringEnumConverter()
+                    }
+                }
+            )
         </code>
     </MudContainer>
 }

@@ -11,13 +11,16 @@ namespace MP.Devember.RLaunch.Pages
     public partial class Index : ComponentBase
     {
         [Inject]
-        private IBasicDetailsClient TokenClient { get; set; }
+        private IBasicDetailsClient? TokenClient { get; set; }
 
         [Inject]
-        public IOptions<FeaturedToken> TokenConfiguration { get; set; }
+        public IOptions<FeaturedToken>? TokenConfiguration { get; set; }
 
         [Inject]
         public ITranslationService? TranslationService { get; set; }
+
+        [Inject]
+        private ILogger<Index>? Logger { get; set; }
 
         private ITranslationService TS { get => TranslationService == null ? throw new NullReferenceException() : TranslationService; }
 
@@ -27,14 +30,16 @@ namespace MP.Devember.RLaunch.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            var tokenId = TokenConfiguration.Value.Id;
+            var tokenId = TokenConfiguration!.Value.Id;
 
             try
             {
-                TokenSummary = await TokenClient.GetSummary(tokenId);
+                TokenSummary = await TokenClient!.GetSummary(tokenId!);
             }
             catch (ApiException ex)
             {
+                Logger!.LogError(ex, "Error encountered fetching data from API. Displaying error image.");
+
                 TokenSummary = new PublicTokenSummary
                 {
                     Title = "Hidden level: error state",
